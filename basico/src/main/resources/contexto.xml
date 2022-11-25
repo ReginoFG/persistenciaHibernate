@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<!-- Se activa el uso de anotaciones en las clases bean -->    
+    <context:annotation-config></context:annotation-config>
+    <!-- Se define en qué paquete están las clases que podrán tener anotaciones -->
+    <context:component-scan base-package="edu.hibernate.dao, edu.hibernate.impl, edu.hibernate.controlador"></context:component-scan>
+		
+	<!-- Se configura la configuración para la conexión a base de datos -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver"></property>	
+		<property name="url" value="jdbc:postgresql://localhost:5432/cspharma_operacional"></property>
+		<property name="username" value="postgres"></property>
+		<property name="password" value="pr0f3s0r"></property>
+	</bean>
+	
+	<!-- Configuración del JPA -->
+	<bean id="entityManagerFactory" 
+			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+			p:packagesToScan="edu.hibernate.dao"
+            p:dataSource-ref="dataSource"
+			>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="true" />
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- Gestor de transacciones -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	
+	<!-- Se habilita la anotación para transacciones -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+</beans>
+	
+

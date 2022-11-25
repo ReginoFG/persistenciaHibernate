@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.hibernate</groupId>
+  <artifactId>basico</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>basicoHibernate</name>
+  <description>primeros pasos</description>
+  <url>http://maven.apache.org</url>
+  
+	<properties>
+		<!-- Generic properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<spring.version>5.2.22.RELEASE</spring.version>
+		<hibernate.version>5.6.14.Final</hibernate.version>
+	</properties>
+
+  <dependencies>
+	<!-- Log: permite escribir mensajes de registro,
+	cuyo propósito es dejar constancia de una determinada transacción 
+	en tiempo de ejecución, filtrando según importancia -->
+    <dependency>
+    	<groupId>org.apache.logging.log4j</groupId>
+    	<artifactId>log4j-api</artifactId>
+    	<version>2.19.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.logging.log4j</groupId>
+    	<artifactId>log4j-core</artifactId>
+    	<version>2.19.0</version>
+    </dependency>
+	<!-- FRAMEWORK SPRING -->
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>5.2.22.RELEASE</version>
+	</dependency>	 
+    <!-- Bloque de construcción básico para Spring que, junto con Spring Beans, 
+    proporciona funciones de inyección de dependencias e IoC.-->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-core</artifactId>
+  		<version>5.2.22.RELEASE</version>
+  	</dependency>
+  	<!-- Spring Beans proporciona el marco de configuración y la 
+  	funcionalidad básica para instanciar, configurar y ensamblar objetos java.-->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-beans</artifactId>
+  		<version>5.2.20.RELEASE</version>
+  	</dependency>
+  	<!-- Clases de soporte para integrar bibliotecas comunes de terceros 
+  	en un contexto de aplicación de Spring-->
+  	<dependency>
+  	  	<groupId>org.springframework</groupId>
+  		<artifactId>spring-context-support</artifactId>
+  		<version>5.2.22.RELEASE</version>  	
+  	</dependency>
+  	<!-- proporciona características de integración como la funcionalidad de 
+  	carga de archivos de varias partes y la inicialización del contenedor IoC 
+  	utilizando escuchas de servlets y un contexto de aplicación orientado a la 
+  	web. También contiene un cliente HTTP y las partes relacionadas con la web 
+  	del soporte remoto de Spring. -->
+  	<dependency>
+  	  	<groupId>org.springframework</groupId>
+  		<artifactId>spring-web</artifactId>
+  		<version>5.2.20.RELEASE</version>  	
+  	</dependency>
+  	<!-- proporciona capas de integración para las API más populares de mapeo 
+  	relacional de objetos, incluidas JPA, JDO e Hibernate-->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<version>5.2.22.RELEASE</version>
+	</dependency>
+    <!-- HIBERNATE -->
+	<!-- Incluye core -->
+    <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>5.6.14.Final</version>
+	</dependency>
+	<!-- DRIVERS -->
+	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.5.0</version>
+	</dependency>
+	<!-- SERVLET -->  		 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.2</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  
+  	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
