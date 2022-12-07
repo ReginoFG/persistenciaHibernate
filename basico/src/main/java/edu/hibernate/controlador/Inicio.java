@@ -17,7 +17,7 @@ public class Inicio {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("contexto.xml"); 
 		Consultas consulta = (Consultas) context.getBean(Consultas.class);
-		consulta.insertarUnPedido(new Pedido(6,"funciona"));
+		consulta.insertarUnPedido(new Pedido(29,"no entiendo"));
 		System.out.println("Lista pedidos: " + consulta.buscarTodosPedidos());
 	    
 	}

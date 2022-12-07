@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name="ped_tbh_pedidos")
+@Table(name="ped_tbh_pedidos", schema="dlk_web_pedidos")
 public class Pedido {
 
 	
